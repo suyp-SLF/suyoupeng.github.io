@@ -75,12 +75,16 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-shader-item-wave-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-shader-tree-wind" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/08/31/shader-item-wave-1/" class="article-date">
-  <time class="dt-published" datetime="2025-08-31T09:40:33.000Z" itemprop="datePublished">2025-08-31</time>
+    <a href="/2025/09/02/shader-tree-wind/" class="article-date">
+  <time class="dt-published" datetime="2025-09-01T23:08:47.000Z" itemprop="datePublished">2025-09-02</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Game/">Game</a>►<a class="article-category-link" href="/categories/Game/godot/">godot</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -89,7 +93,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/08/31/shader-item-wave-1/">shader: item wave</a>
+      <a class="p-name article-title" href="/2025/09/02/shader-tree-wind/">shader-tree-wind</a>
     </h1>
   
 
@@ -97,14 +101,18 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="create-a-wind-tree-in-shader-godot"><a href="#create-a-wind-tree-in-shader-godot" class="headerlink" title="create a wind tree in shader (godot)"></a>create a wind tree in shader (godot)</h1><h2 id="let-me-show-this"><a href="#let-me-show-this" class="headerlink" title="let me show this"></a>let me show this</h2><p><img src="/images/posts/shader-tree-wind/1.gif" alt="preview"></p>
+<h2 id="using-godot"><a href="#using-godot" class="headerlink" title="using godot"></a>using godot</h2><h2 id="Shader-Code"><a href="#Shader-Code" class="headerlink" title="Shader Code"></a>Shader Code</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">shader_type canvas_item;</span><br><span class="line"></span><br><span class="line">uniform bool render_noise = false;</span><br><span class="line">uniform sampler2D noise_texture : repeat_enable; // set in inspector</span><br><span class="line">uniform float amplitude : hint_range(0.0, 0.5, 0.01) = 0.2;</span><br><span class="line">uniform float time_scale : hint_range(0.0, 5.0, 0.01) = 0.04;</span><br><span class="line">uniform float noise_scale : hint_range(0.0, 2.0, 0.0001) = 0.001;</span><br><span class="line">uniform float rotation_strength : hint_range(0.0, 5.0, 0.1) = 1;</span><br><span class="line">uniform vec2 rotation_pivot = vec2(0.5, 1);</span><br><span class="line">varying vec2 world_position;</span><br><span class="line"></span><br><span class="line">void vertex()&#123;</span><br><span class="line">    world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vec2 get_sample_pos(vec2 pos, float scale, float offset) &#123;</span><br><span class="line">	pos *= scale;</span><br><span class="line">	pos += offset;</span><br><span class="line">	return pos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vec2 rotate_vec(vec2 vec, vec2 pivot, float rotation) &#123;</span><br><span class="line">	float cosa = cos(rotation);</span><br><span class="line">	float sina = sin(rotation);</span><br><span class="line">	vec -= pivot;</span><br><span class="line">	return vec2(</span><br><span class="line">		cosa * vec.x - sina * vec.y,</span><br><span class="line">		cosa * vec.y + sina * vec.x</span><br><span class="line">	) + pivot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void fragment() &#123;</span><br><span class="line">	// get noise from texture</span><br><span class="line">	vec2 noise_sample_pos = get_sample_pos(world_position, noise_scale, TIME * time_scale);</span><br><span class="line">	float noise_amount = texture(noise_texture, noise_sample_pos).r - 0.5f;</span><br><span class="line"></span><br><span class="line">	// get rotation position around a pivot</span><br><span class="line">	float rotation = amplitude * noise_amount;</span><br><span class="line">	vec2 rotated_uvs = rotate_vec(UV, rotation_pivot, rotation);</span><br><span class="line"></span><br><span class="line">	// blend original uvs and rotated uvs based on distance to pivot</span><br><span class="line">	float dist = distance(UV, rotation_pivot) * rotation_strength;</span><br><span class="line">	vec2 result_uvs = mix(UV, rotated_uvs, dist);</span><br><span class="line"></span><br><span class="line">	// output color</span><br><span class="line">	COLOR = texture(TEXTURE, result_uvs);</span><br><span class="line"></span><br><span class="line">	// optional, preview noise texture for debugging</span><br><span class="line">	if (render_noise) &#123;</span><br><span class="line">		vec4 noise_color = texture(noise_texture, noise_sample_pos);</span><br><span class="line">		COLOR = noise_color;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/shader-item-wave-1/" data-id="cmezjnafp0001t66uhopeg8qh" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/02/shader-tree-wind/" data-id="cmf1qhn11000ax36u2rkv7gmp" data-title="shader-tree-wind" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
+
     </footer>
   </div>
   
@@ -145,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/shader-item-wave/" data-id="cmezjnafr0008t66uhst49zuj" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/08/31/shader-item-wave/" data-id="cmf1qhn0x0000x36uef44av8f" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -185,7 +193,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="how-to-create-a-simple-blog"><a href="#how-to-create-a-simple-blog" class="headerlink" title="how to create a simple blog"></a>how to create a simple blog</h1><p>for who want to create a blog。</p>
+        <p>for who want to create a blog。</p>
 <h2 id="Using-Hexo-github-account-MacBook-NodeJs"><a href="#Using-Hexo-github-account-MacBook-NodeJs" class="headerlink" title="Using: Hexo, github account, MacBook, NodeJs,"></a>Using: Hexo, github account, MacBook, NodeJs,</h2><h2 id="check-NodeJs-Installed"><a href="#check-NodeJs-Installed" class="headerlink" title="check: NodeJs Installed"></a>check: NodeJs Installed</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 
 <h2 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
@@ -211,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/How-to-create-a-simple-blog/" data-id="cmezjnafn0000t66ufi4d0wa2" data-title="How to create a simple blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/08/31/How-to-create-a-simple-blog/" data-id="cmf1qhn110009x36u70urd2h4" data-title="How to create a simple blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -255,7 +263,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/godot/" style="font-size: 10px;">godot</a> <a href="/tags/shader/" style="font-size: 10px;">shader</a>
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/godot/" style="font-size: 20px;">godot</a> <a href="/tags/shader/" style="font-size: 20px;">shader</a>
     </div>
   </div>
 
@@ -264,7 +272,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li></ul>
     </div>
   </div>
 
@@ -277,7 +285,7 @@
       <ul>
         
           <li>
-            <a href="/2025/08/31/shader-item-wave-1/">shader: item wave</a>
+            <a href="/2025/09/02/shader-tree-wind/">shader-tree-wind</a>
           </li>
         
           <li>
