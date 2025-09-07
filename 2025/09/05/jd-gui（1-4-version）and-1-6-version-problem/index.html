@@ -15,11 +15,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/1.png">
 <meta property="og:image" content="http://example.com/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/2.png">
-<meta property="og:image" content="http://example.com/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/3.png">
 <meta property="article:published_time" content="2025-09-05T10:34:21.000Z">
-<meta property="article:modified_time" content="2025-09-05T11:48:16.740Z">
+<meta property="article:modified_time" content="2025-09-07T18:45:32.100Z">
 <meta property="article:author" content="Su Youpeng">
-<meta property="article:tag" content="Godot">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="jd-gui">
+<meta property="article:tag" content="compile">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/1.png">
   
@@ -89,7 +90,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Game/">Game</a>
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
   </div>
 
   </div>
@@ -116,7 +117,7 @@
 <h2 id="4-1-find-the-Environment’s-Java-Verion"><a href="#4-1-find-the-Environment’s-Java-Verion" class="headerlink" title="4.1 find the Environment’s Java Verion"></a>4.1 find the Environment’s Java Verion</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">java -version</span></span><br><span class="line">openjdk version &quot;22.0.2&quot; 2024-07-16</span><br><span class="line">OpenJDK Runtime Environment Zulu22.32+15-CA (build 22.0.2+9)</span><br><span class="line">OpenJDK 64-Bit Server VM Zulu22.32+15-CA (build 22.0.2+9, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
 <h2 id="4-2-check-versions-list"><a href="#4-2-check-versions-list" class="headerlink" title="4.2 check versions list"></a>4.2 check versions list</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/libexec/java_home  -V</span><br><span class="line">Matching Java Virtual Machines (2):</span><br><span class="line">    22.0.2 (arm64) &quot;Azul Systems, Inc.&quot; - &quot;Zulu 22.32.15&quot; /Library/Java/JavaVirtualMachines/zulu-22.jdk/Contents/Home</span><br><span class="line">    1.8.0_322 (arm64) &quot;Azul Systems, Inc.&quot; - &quot;Zulu 8.60.0.21&quot; /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home</span><br><span class="line">/Library/Java/JavaVirtualMachines/zulu-22.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
 <h2 id="4-3-reason-Both-Java-22-and-8-version-defalult-22-Version"><a href="#4-3-reason-Both-Java-22-and-8-version-defalult-22-Version" class="headerlink" title="4.3 reason: Both Java 22 and 8 version, defalult 22 Version"></a>4.3 reason: Both Java 22 and 8 version, defalult 22 Version</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">setting Java_Home</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">open -e ~/.bash_profile</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">add text</span></span><br><span class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">effect Setting</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">source</span> ~/.bash_profile</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在执行就能够正常打开了</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/2.png" alt="software"><br><img src="/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/3.png" alt="software"></p>
+<p><img src="/images/posts/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/2.png" alt="software"></p>
 <h1 id="5-Following-problem"><a href="#5-Following-problem" class="headerlink" title="5. Following problem"></a>5. Following problem</h1><p>I find having something other error, It just using in shell command. When double click the Application, it will also have problem.<br>Or whenn open a new Shell, it also have this question.</p>
 <h2 id="5-1-find-issue-is-the-setting-file-is-different"><a href="#5-1-find-issue-is-the-setting-file-is-different" class="headerlink" title="5.1 find issue is the setting file is different"></a>5.1 find issue is the setting file is different</h2><p>Mac Book using Zsh Shell(macOS Catalina version and later version), the old version using Bash</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">check the using shell</span></span><br><span class="line">echo $SHELL</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="keyword">if</span> output</span></span><br><span class="line">/bin/zsh </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">modify file: ~/.zshrc</span></span><br><span class="line">-----------------------------</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="keyword">if</span> output</span></span><br><span class="line">/bin/bash </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">modify file: ~/.bash_profile</span></span><br></pre></td></tr></table></figure>
@@ -130,17 +131,26 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" data-id="cmf9yhyv1000hhu6u132fa5z5" data-title="jd-gui（1.4 version）and (1.6 version) problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" data-id="cmfa1sjjs0008gi6uavw70ywe" data-title="jd-gui（1.4 version）and (1.6 version) problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compile/" rel="tag">compile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jd-gui/" rel="tag">jd-gui</a></li></ul>
 
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2025/09/08/Exception-Stack-Trace-Suppression-about-print-same-log/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Exception Stack Trace Suppression (about print same log)
+        
+      </div>
+    </a>
   
   
     <a href="/2025/09/03/Log-of-Far-Away/" id="article-nav-older" class="article-nav-link-wrap">
@@ -172,7 +182,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/" rel="tag">Log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/" rel="tag">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jd-gui/" rel="tag">jd-gui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
     </div>
   </div>
 
@@ -182,7 +192,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Godot/" style="font-size: 20px;">Godot</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/godot/" style="font-size: 15px;">godot</a> <a href="/tags/shader/" style="font-size: 15px;">shader</a>
+      <a href="/tags/Godot/" style="font-size: 20px;">Godot</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/godot/" style="font-size: 20px;">godot</a> <a href="/tags/jd-gui/" style="font-size: 10px;">jd-gui</a> <a href="/tags/shader/" style="font-size: 20px;">shader</a>
     </div>
   </div>
 
@@ -204,6 +214,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/08/Exception-Stack-Trace-Suppression-about-print-same-log/">Exception Stack Trace Suppression (about print same log)</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/">jd-gui（1.4 version）and (1.6 version) problem</a>
           </li>
         
@@ -217,10 +231,6 @@
         
           <li>
             <a href="/2025/09/02/shader-tree-wind/">shader-tree-wind</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/31/shader-item-wave/">shader: item wave</a>
           </li>
         
       </ul>
