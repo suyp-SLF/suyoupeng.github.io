@@ -75,6 +75,95 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java-Garbage-Collection-GC" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/08/Java-Garbage-Collection-GC/" class="article-date">
+  <time class="dt-published" datetime="2025-09-07T18:58:44.000Z" itemprop="datePublished">2025-09-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/08/Java-Garbage-Collection-GC/">Java: Garbage Collection, GC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="what-is-GC"><a href="#what-is-GC" class="headerlink" title="what is GC?"></a>what is GC?</h1><p>GC is a kind of Memory Collection system, when you do something in Java. you must use memory.<br>You must to control the memeory, that make you application going longer.</p>
+<p>Used memory how to auto collection, that what it doing.</p>
+<h2 id="OutOfMemoryError"><a href="#OutOfMemoryError" class="headerlink" title="OutOfMemoryError"></a>OutOfMemoryError</h2><h3 id="when-use-too-much-memory-it-will-throw-Error-OutOfMemoryError"><a href="#when-use-too-much-memory-it-will-throw-Error-OutOfMemoryError" class="headerlink" title="when use too much memory, it will throw Error (OutOfMemoryError)"></a>when use too much memory, it will throw Error (OutOfMemoryError)</h3><table>
+<thead>
+<tr>
+<th>Memory Part Name</th>
+<th>private&#x2F;public</th>
+<th>ErrorName</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Program Couner Register</td>
+<td>private</td>
+<td>OutOfMemoryError</td>
+</tr>
+<tr>
+<td>JVM Stacks</td>
+<td>private</td>
+<td>OutOfMemoryError, StackOverflowError</td>
+</tr>
+<tr>
+<td>Native Method Stacks</td>
+<td>private</td>
+<td>OutOfMemoryError, StackOverflowError</td>
+</tr>
+<tr>
+<td>Java Heap</td>
+<td>public</td>
+<td>OutOfMemoryError</td>
+</tr>
+<tr>
+<td>Method Area</td>
+<td>public</td>
+<td>OutOfMemoryError</td>
+</tr>
+<tr>
+<td>Runtime Constant Pool</td>
+<td>public</td>
+<td>OutOfMemoryError</td>
+</tr>
+</tbody></table>
+<h3 id="Program-Couner-Register"><a href="#Program-Couner-Register" class="headerlink" title="Program Couner Register"></a>Program Couner Register</h3><h3 id="JVM-Stacks"><a href="#JVM-Stacks" class="headerlink" title="JVM Stacks"></a>JVM Stacks</h3><h3 id="Native-Method-Stacks"><a href="#Native-Method-Stacks" class="headerlink" title="Native Method Stacks"></a>Native Method Stacks</h3><h3 id="Java-Heap"><a href="#Java-Heap" class="headerlink" title="Java Heap"></a>Java Heap</h3><h3 id="Method-Area-XX-MaxMetaspaceSize"><a href="#Method-Area-XX-MaxMetaspaceSize" class="headerlink" title="Method Area, -XX:MaxMetaspaceSize"></a>Method Area, -XX:MaxMetaspaceSize</h3><p>Metaspace is Method Area<br>before Java 1.7, Named PermGen and in Java Heap<br>after Java 1.8+, Named Metaspace, specical space in Memory</p>
+<p>-XX:MaxMetaspaceSize：(Max MetaspaceSize), Default: unlimited<br>when can’t get the space in Metaspace(Method Area)</p>
+<h3 id="Runtime-Constant-Pool"><a href="#Runtime-Constant-Pool" class="headerlink" title="Runtime Constant Pool"></a>Runtime Constant Pool</h3><h3 id="Is-GC-only-about-Heap-Memory"><a href="#Is-GC-only-about-Heap-Memory" class="headerlink" title="Is GC only about Heap Memory?"></a>Is GC only about Heap Memory?</h3><h2 id="No-it-manager-Java-Heap-and-Method-Area"><a href="#No-it-manager-Java-Heap-and-Method-Area" class="headerlink" title="No, it manager Java Heap and Method Area"></a>No, it manager <strong>Java Heap</strong> and <strong>Method Area</strong></h2><hr>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/08/Java-Garbage-Collection-GC/" data-id="cmfb83rge00042b6u6df3clu7" data-title="Java: Garbage Collection, GC" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GC/" rel="tag">GC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-jd-gui（1-4-version）and-1-6-version-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" class="article-date">
@@ -123,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" data-id="cmfa211eb0010py6u9x94gsnn" data-title="jd-gui（1.4 version）and (1.6 version) problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" data-id="cmfb83rgi000z2b6u39emeefo" data-title="jd-gui（1.4 version）and (1.6 version) problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -170,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/03/Log-of-Far-Away/" data-id="cmfa211e40000py6u4co1avre" data-title="Log of Far Away" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/03/Log-of-Far-Away/" data-id="cmfb83rge00052b6ub3r48673" data-title="Log of Far Away" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -202,7 +291,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/03/c-IDamageable/">c# IDamageable</a>
+      <a class="p-name article-title" href="/2025/09/03/c-IDamageable/">C# IDamageable</a>
     </h1>
   
 
@@ -216,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/03/c-IDamageable/" data-id="cmfa211e80005py6u8md8him2" data-title="c# IDamageable" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/03/c-IDamageable/" data-id="cmfb83rgh000x2b6ubvrx9qg7" data-title="C# IDamageable" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -262,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/shader-item-wave/" data-id="cmfa211e90006py6ueoqi1ceh" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/08/31/shader-item-wave/" data-id="cmfb83rgh000w2b6u669d5uet" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -328,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/How-to-create-a-simple-blog/" data-id="cmfa211e80004py6u6znic979" data-title="How to create a simple blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/08/31/How-to-create-a-simple-blog/" data-id="cmfb83rgc00012b6u3yg3drdy" data-title="How to create a simple blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -373,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/09/Exception-Stack-Trace-Suppression-about-print-same-log/" data-id="cmfa211e60001py6uexhx6o1e" data-title="Exception Stack Trace Suppression (about print same log)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2022/03/09/Exception-Stack-Trace-Suppression-about-print-same-log/" data-id="cmfb83rga00002b6ugplpfytw" data-title="Exception Stack Trace Suppression (about print same log)" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -397,7 +486,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/C/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/godot/">godot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/C/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/godot/">godot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a></li></ul>
     </div>
   </div>
 
@@ -407,7 +496,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/" rel="tag">Log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/" rel="tag">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jd-gui/" rel="tag">jd-gui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GC/" rel="tag">GC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/" rel="tag">Log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/" rel="tag">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jd-gui/" rel="tag">jd-gui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
     </div>
   </div>
 
@@ -417,7 +506,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Godot/" style="font-size: 20px;">Godot</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/godot/" style="font-size: 10px;">godot</a> <a href="/tags/jd-gui/" style="font-size: 10px;">jd-gui</a> <a href="/tags/shader/" style="font-size: 10px;">shader</a>
+      <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/Godot/" style="font-size: 15px;">Godot</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/godot/" style="font-size: 10px;">godot</a> <a href="/tags/jd-gui/" style="font-size: 10px;">jd-gui</a> <a href="/tags/shader/" style="font-size: 10px;">shader</a>
     </div>
   </div>
 
@@ -439,6 +528,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/08/Java-Garbage-Collection-GC/">Java: Garbage Collection, GC</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/">jd-gui（1.4 version）and (1.6 version) problem</a>
           </li>
         
@@ -447,15 +540,11 @@
           </li>
         
           <li>
-            <a href="/2025/09/03/c-IDamageable/">c# IDamageable</a>
+            <a href="/2025/09/03/c-IDamageable/">C# IDamageable</a>
           </li>
         
           <li>
             <a href="/2025/08/31/shader-item-wave/">shader: item wave</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/31/How-to-create-a-simple-blog/">How to create a simple blog</a>
           </li>
         
       </ul>
