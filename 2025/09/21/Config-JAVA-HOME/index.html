@@ -4,15 +4,24 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: Docker | Su Youpeng blogs</title>
+  <title>Config JAVA_HOME | Su Youpeng blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Su Youpeng blogs">
-<meta property="og:url" content="http://example.com/tags/Docker/index.html">
+  <meta name="description" content="MAC版本jdk位置&#x2F;where一般JDK 位置 :(tip：很多命令需要sudo，不然查不到)～&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F; 打开配置文件open -e ~&#x2F;.zshrcopen -e ~&#x2F;.bash_profile 切换配置JAVA_HOME&#x2F;change version在配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Config JAVA_HOME">
+<meta property="og:url" content="http://example.com/2025/09/21/Config-JAVA-HOME/index.html">
 <meta property="og:site_name" content="Su Youpeng blogs">
+<meta property="og:description" content="MAC版本jdk位置&#x2F;where一般JDK 位置 :(tip：很多命令需要sudo，不然查不到)～&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F; 打开配置文件open -e ~&#x2F;.zshrcopen -e ~&#x2F;.bash_profile 切换配置JAVA_HOME&#x2F;change version在配">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/posts/Config-JAVA-HOME/1.png">
+<meta property="og:image" content="http://example.com/images/posts/Config-JAVA-HOME/2.png">
+<meta property="article:published_time" content="2025-09-20T21:27:22.000Z">
+<meta property="article:modified_time" content="2025-09-20T21:32:21.818Z">
 <meta property="article:author" content="Su Youpeng">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JAVA_HOME">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/posts/Config-JAVA-HOME/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Su Youpeng blogs" type="application/atom+xml">
   
@@ -73,58 +82,63 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/22/Check-Docker-images/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-22T15:52:13.000Z" itemprop="datePublished">Mar 22</time>
+        <section id="main"><article id="post-Config-JAVA-HOME" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/21/Config-JAVA-HOME/" class="article-date">
+  <time class="dt-published" datetime="2025-09-20T21:27:22.000Z" itemprop="datePublished">2025-09-21</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/22/Check-Docker-images/">Check Docker images</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Config JAVA_HOME
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/20/docker-command-cp/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-19T19:01:03.000Z" itemprop="datePublished">Mar 20</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/20/docker-command-cp/">docker command cp</a>
-    </h1>
-  
+        <h1 id="MAC版本"><a href="#MAC版本" class="headerlink" title="MAC版本"></a>MAC版本</h1><p>jdk位置&#x2F;where<br>一般JDK 位置 :(tip：很多命令需要sudo，不然查不到)<br>～&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;</p>
+<h1 id="打开配置文件"><a href="#打开配置文件" class="headerlink" title="打开配置文件"></a>打开配置文件</h1><p>open -e ~&#x2F;.zshrc<br>open -e ~&#x2F;.bash_profile</p>
+<h1 id="切换配置JAVA-HOME-change-version"><a href="#切换配置JAVA-HOME-change-version" class="headerlink" title="切换配置JAVA_HOME&#x2F;change version"></a>切换配置JAVA_HOME&#x2F;change version</h1><p>在配置文件添加JAVA_HOME,可以切换或者配置Java版本。<br>JAVA_HOME &#x3D; &#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;zulu-8.jdk&#x2F;Contents&#x2F;Home<br><img src="/images/posts/Config-JAVA-HOME/1.png" alt="change version"></p>
+<h1 id="使配置生效-active-config"><a href="#使配置生效-active-config" class="headerlink" title="*使配置生效&#x2F;active config"></a>*使配置生效&#x2F;active config</h1><p>配置玩的文件通过命令使配置生效：<br>source ~&#x2F;.bash_profile</p>
+<h1 id="查询所有版本-search-all-versions"><a href="#查询所有版本-search-all-versions" class="headerlink" title="查询所有版本&#x2F;search all versions"></a>查询所有版本&#x2F;search all versions</h1><p>&#x2F;usr&#x2F;libexec&#x2F;java_home  -V<br><img src="/images/posts/Config-JAVA-HOME/2.png" alt="search all versions"></p>
+<h1 id="进阶解决方案-high-leve-solution"><a href="#进阶解决方案-high-leve-solution" class="headerlink" title="进阶解决方案 \ high leve solution"></a>进阶解决方案 \ high leve solution</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">手动切换JDK版本</span><br><span class="line"></span><br><span class="line">通过修改 ~/.bash_profile文件修改JAVA_HOME，如果没有这个文件则需要新建一个。alias是自定义命令别名，修改配置文件如下：</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#######################</span></span></span><br><span class="line">export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)</span><br><span class="line">export JAVA_9_HOME=$(/usr/libexec/java_home -v9)</span><br><span class="line">export JAVA_10_HOME=$(/usr/libexec/java_home -v10)</span><br><span class="line">export JAVA_11_HOME=$(/usr/libexec/java_home -v11)</span><br><span class="line"></span><br><span class="line">alias java8=&#x27;export JAVA_HOME=$JAVA_8_HOME&#x27;</span><br><span class="line">alias java9=&#x27;export JAVA_HOME=$JAVA_9_HOME&#x27;</span><br><span class="line">alias java10=&#x27;export JAVA_HOME=$JAVA_10_HOME&#x27;</span><br><span class="line">alias java11=&#x27;export JAVA_HOME=$JAVA_11_HOME&#x27;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">默认是Java 11</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#######################</span></span></span><br><span class="line"></span><br><span class="line">执行下面命令，让文件生效</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"></span><br><span class="line">切换JDK版本就执行对应命令别名，比如，我要切换成JDK9，就直接输入命令</span><br><span class="line">java9</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/21/Config-JAVA-HOME/" data-id="cmfssb4bo0006sxj8a3vbdouv" data-title="Config JAVA_HOME" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-HOME/" rel="tag">JAVA_HOME</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/09/09/Restaurant-Somethings/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Restaurant Something</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
