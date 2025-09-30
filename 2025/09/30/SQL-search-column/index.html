@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: Hexo | Su Youpeng blogs</title>
+  <title>SQL search column | Su Youpeng blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Su Youpeng blogs">
-<meta property="og:url" content="http://example.com/tags/Hexo/index.html">
+  <meta name="description" content="ORACLE12345678910111213141516171819##Useful Sqlselect    column_name,    data_type,    data_length,    DATA_PRECISION,    DATA_SCALEfrom all_tab_columns -- user have permiss&#x2F;当前用户有权限访问的表, dba_tab_colum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL search column">
+<meta property="og:url" content="http://example.com/2025/09/30/SQL-search-column/index.html">
 <meta property="og:site_name" content="Su Youpeng blogs">
+<meta property="og:description" content="ORACLE12345678910111213141516171819##Useful Sqlselect    column_name,    data_type,    data_length,    DATA_PRECISION,    DATA_SCALEfrom all_tab_columns -- user have permiss&#x2F;当前用户有权限访问的表, dba_tab_colum">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-30T11:37:39.000Z">
+<meta property="article:modified_time" content="2025-09-30T11:45:38.357Z">
 <meta property="article:author" content="Su Youpeng">
+<meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Su Youpeng blogs" type="application/atom+xml">
@@ -73,39 +78,60 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/08/31/How-to-create-a-simple-blog/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-08-30T21:10:35.000Z" itemprop="datePublished">Aug 31</time>
+        <section id="main"><article id="post-SQL-search-column" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/30/SQL-search-column/" class="article-date">
+  <time class="dt-published" datetime="2025-09-30T11:37:39.000Z" itemprop="datePublished">2025-09-30</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>►<a class="article-category-link" href="/categories/SQL/Database/">Database</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/08/31/How-to-create-a-simple-blog/">How to create a simple blog</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      SQL search column
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="ORACLE"><a href="#ORACLE" class="headerlink" title="ORACLE"></a>ORACLE</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">##Useful <span class="keyword">Sql</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    column_name,</span><br><span class="line">    data_type,</span><br><span class="line">    data_length,</span><br><span class="line">    DATA_PRECISION,</span><br><span class="line">    DATA_SCALE</span><br><span class="line"><span class="keyword">from</span> all_tab_columns <span class="comment">-- user have permiss/当前用户有权限访问的表, dba_tab_columns/数据库中所有表（需要 DBA 权限）</span></span><br><span class="line"><span class="keyword">where</span> table_name<span class="operator">=</span><span class="built_in">upper</span>(<span class="string">&#x27;tablename&#x27;</span>);</span><br><span class="line">##Useful <span class="keyword">Sql</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	t.table_name,  <span class="comment">-- tablename/表名</span></span><br><span class="line">	t.column_name,<span class="comment">-- columnname/字段名</span></span><br><span class="line">	t.data_type,  <span class="comment">-- columntype/字段类型</span></span><br><span class="line">	t.data_length  <span class="comment">-- columnsize/字段长度</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	user_tab_columns t <span class="comment">-- user having table/当前用户拥有的表</span></span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">	t.table_name<span class="operator">=</span><span class="string">&#x27;tablename&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/30/SQL-search-column/" data-id="cmg6hr4o7000pro6u8a2agv5p" data-title="SQL search column" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/09/09/Restaurant-Somethings/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Restaurant Something</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
