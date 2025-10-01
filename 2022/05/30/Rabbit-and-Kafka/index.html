@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archives | Su Youpeng blogs</title>
+  <title>Rabbit and Kafka | Su Youpeng blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Su Youpeng blogs">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="RabbitMQ VS KafkaKafka vs RabbitMQ: Technical Comparison   Feature Apache Kafka RabbitMQ    Architecture Type Distributed commit log Message broker   Messaging Pattern Publish-Subscribe Multiple patte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rabbit and Kafka">
+<meta property="og:url" content="http://example.com/2022/05/30/Rabbit-and-Kafka/index.html">
 <meta property="og:site_name" content="Su Youpeng blogs">
+<meta property="og:description" content="RabbitMQ VS KafkaKafka vs RabbitMQ: Technical Comparison   Feature Apache Kafka RabbitMQ    Architecture Type Distributed commit log Message broker   Messaging Pattern Publish-Subscribe Multiple patte">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-30T12:17:02.000Z">
+<meta property="article:modified_time" content="2025-10-01T10:46:22.578Z">
 <meta property="article:author" content="Su Youpeng">
+<meta property="article:tag" content="Technology">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Su Youpeng blogs" type="application/atom+xml">
@@ -73,150 +78,122 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/03/20/unzip-zip-unix-command/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-03-20T13:09:38.000Z" itemprop="datePublished">Mar 20</time>
+        <section id="main"><article id="post-Rabbit-and-Kafka" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/30/Rabbit-and-Kafka/" class="article-date">
+  <time class="dt-published" datetime="2022-05-30T12:17:02.000Z" itemprop="datePublished">2022-05-30</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>►<a class="article-category-link" href="/categories/Technology/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/20/unzip-zip-unix-command/">unzip/zip unix command (.tar、.gz、.tar.gz、.zip)</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Rabbit and Kafka
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="RabbitMQ-VS-Kafka"><a href="#RabbitMQ-VS-Kafka" class="headerlink" title="RabbitMQ VS Kafka"></a>RabbitMQ VS Kafka</h1><h1 id="Kafka-vs-RabbitMQ-Technical-Comparison"><a href="#Kafka-vs-RabbitMQ-Technical-Comparison" class="headerlink" title="Kafka vs RabbitMQ: Technical Comparison"></a>Kafka vs RabbitMQ: Technical Comparison</h1><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Apache Kafka</th>
+<th>RabbitMQ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Architecture Type</strong></td>
+<td>Distributed commit log</td>
+<td>Message broker</td>
+</tr>
+<tr>
+<td><strong>Messaging Pattern</strong></td>
+<td>Publish-Subscribe</td>
+<td>Multiple patterns supported</td>
+</tr>
+<tr>
+<td><strong>Message Ordering</strong></td>
+<td>✅ Per-partition ordering</td>
+<td>✅ Per-queue ordering</td>
+</tr>
+<tr>
+<td><strong>Message Persistence</strong></td>
+<td>✅ Disk-based storage</td>
+<td>⚠️ Memory with optional disk</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>🚀 Very High (millions&#x2F;sec)</td>
+<td>✅ High (thousands&#x2F;sec)</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>⚠️ Higher (ms range)</td>
+<td>✅ Lower (μs range)</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>Custom binary protocol</td>
+<td>AMQP 0-9-1</td>
+</tr>
+<tr>
+<td><strong>Data Replay</strong></td>
+<td>✅ Native support</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td><strong>Delivery Semantics</strong></td>
+<td>At-least-once, Exactly-once</td>
+<td>At-least-once, At-most-once</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Kafka Consumer</span></span><br><span class="line"><span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">props.put(<span class="string">&quot;bootstrap.servers&quot;</span>, <span class="string">&quot;localhost:9092&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;group.id&quot;</span>, <span class="string">&quot;test-group&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;key.deserializer&quot;</span>, <span class="string">&quot;StringDeserializer&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;value.deserializer&quot;</span>, <span class="string">&quot;StringDeserializer&quot;</span>);</span><br><span class="line"></span><br><span class="line">KafkaConsumer&lt;String, String&gt; consumer = <span class="keyword">new</span> <span class="title class_">KafkaConsumer</span>&lt;&gt;(props);</span><br><span class="line">consumer.subscribe(Arrays.asList(<span class="string">&quot;topic&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// RabbitMQ Consumer</span></span><br><span class="line"><span class="type">ConnectionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConnectionFactory</span>();</span><br><span class="line">factory.setHost(<span class="string">&quot;localhost&quot;</span>);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> factory.newConnection();</span><br><span class="line"><span class="type">Channel</span> <span class="variable">channel</span> <span class="operator">=</span> connection.createChannel();</span><br><span class="line"><span class="type">DeliverCallback</span> <span class="variable">deliverCallback</span> <span class="operator">=</span> (consumerTag, delivery) -&gt; &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(delivery.getBody(), <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">channel.basicConsume(<span class="string">&quot;queue&quot;</span>, <span class="literal">true</span>, deliverCallback, consumerTag -&gt; &#123; &#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/30/Rabbit-and-Kafka/" data-id="cmg7v2q6g000kca6ued0r9n19" data-title="Rabbit and Kafka" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/02/22/Java-Create-Excel/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java Create Excel
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/22/Check-Docker-images/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Check Docker images</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/02/22/Java-Create-Excel/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-02-22T01:18:16.000Z" itemprop="datePublished">Feb 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/02/22/Java-Create-Excel/">Java Create Excel</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/05/30/Rabbit-and-Kafka/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-05-30T12:17:02.000Z" itemprop="datePublished">May 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/30/Rabbit-and-Kafka/">Rabbit and Kafka</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/22/Check-Docker-images/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-22T15:52:13.000Z" itemprop="datePublished">Mar 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/22/Check-Docker-images/">Check Docker images</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/20/docker-command-cp/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-19T19:01:03.000Z" itemprop="datePublished">Mar 20</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/20/docker-command-cp/">docker command cp</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/09/Exception-Stack-Trace-Suppression-about-print-same-log/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-09T11:07:18.000Z" itemprop="datePublished">Mar 9</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/09/Exception-Stack-Trace-Suppression-about-print-same-log/">Exception Stack Trace Suppression (about print same log)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
 
 </section>
         

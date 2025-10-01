@@ -75,55 +75,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Config-JAVA-HOME" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/04/Config-JAVA-HOME/" class="article-date">
-  <time class="dt-published" datetime="2024-04-03T17:27:22.000Z" itemprop="datePublished">2024-04-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/04/Config-JAVA-HOME/">Config JAVA_HOME</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="MAC版本"><a href="#MAC版本" class="headerlink" title="MAC版本"></a>MAC版本</h1><p>jdk位置&#x2F;where<br>一般JDK 位置 :(tip：很多命令需要sudo，不然查不到)<br>～&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;</p>
-<h1 id="打开配置文件"><a href="#打开配置文件" class="headerlink" title="打开配置文件"></a>打开配置文件</h1><p>open -e ~&#x2F;.zshrc<br>open -e ~&#x2F;.bash_profile</p>
-<h1 id="切换配置JAVA-HOME-change-version"><a href="#切换配置JAVA-HOME-change-version" class="headerlink" title="切换配置JAVA_HOME&#x2F;change version"></a>切换配置JAVA_HOME&#x2F;change version</h1><p>在配置文件添加JAVA_HOME,可以切换或者配置Java版本。<br>JAVA_HOME &#x3D; &#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;zulu-8.jdk&#x2F;Contents&#x2F;Home<br><img src="/images/posts/Config-JAVA-HOME/1.png" alt="change version"></p>
-<h1 id="使配置生效-active-config"><a href="#使配置生效-active-config" class="headerlink" title="*使配置生效&#x2F;active config"></a>*使配置生效&#x2F;active config</h1><p>配置玩的文件通过命令使配置生效：<br>source ~&#x2F;.bash_profile</p>
-<h1 id="查询所有版本-search-all-versions"><a href="#查询所有版本-search-all-versions" class="headerlink" title="查询所有版本&#x2F;search all versions"></a>查询所有版本&#x2F;search all versions</h1><p>&#x2F;usr&#x2F;libexec&#x2F;java_home  -V<br><img src="/images/posts/Config-JAVA-HOME/2.png" alt="search all versions"></p>
-<h1 id="进阶解决方案-high-leve-solution"><a href="#进阶解决方案-high-leve-solution" class="headerlink" title="进阶解决方案 \ high leve solution"></a>进阶解决方案 \ high leve solution</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">手动切换JDK版本</span><br><span class="line"></span><br><span class="line">通过修改 ~/.bash_profile文件修改JAVA_HOME，如果没有这个文件则需要新建一个。alias是自定义命令别名，修改配置文件如下：</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#######################</span></span></span><br><span class="line">export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)</span><br><span class="line">export JAVA_9_HOME=$(/usr/libexec/java_home -v9)</span><br><span class="line">export JAVA_10_HOME=$(/usr/libexec/java_home -v10)</span><br><span class="line">export JAVA_11_HOME=$(/usr/libexec/java_home -v11)</span><br><span class="line"></span><br><span class="line">alias java8=&#x27;export JAVA_HOME=$JAVA_8_HOME&#x27;</span><br><span class="line">alias java9=&#x27;export JAVA_HOME=$JAVA_9_HOME&#x27;</span><br><span class="line">alias java10=&#x27;export JAVA_HOME=$JAVA_10_HOME&#x27;</span><br><span class="line">alias java11=&#x27;export JAVA_HOME=$JAVA_11_HOME&#x27;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">默认是Java 11</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#######################</span></span></span><br><span class="line"></span><br><span class="line">执行下面命令，让文件生效</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"></span><br><span class="line">切换JDK版本就执行对应命令别名，比如，我要切换成JDK9，就直接输入命令</span><br><span class="line">java9</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/04/Config-JAVA-HOME/" data-id="cmg7v258a0004a76uf5tp08u3" data-title="Config JAVA_HOME" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-HOME/" rel="tag">JAVA_HOME</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-unzip-zip-unix-command" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/03/20/unzip-zip-unix-command/" class="article-date">
@@ -158,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/03/20/unzip-zip-unix-command/" data-id="cmg7v258g0016a76ugg6e6z9n" data-title="unzip/zip unix command (.tar、.gz、.tar.gz、.zip)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/03/20/unzip-zip-unix-command/" data-id="cmg7v2q6i0016ca6uap4wdf5t" data-title="unzip/zip unix command (.tar、.gz、.tar.gz、.zip)" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -202,11 +153,109 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/22/Java-Create-Excel/" data-id="cmg7v258d000ba76u4zk1ajxz" data-title="Java Create Excel" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/02/22/Java-Create-Excel/" data-id="cmg7v2q6g000eca6ua9qq22nu" data-title="Java Create Excel" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Rabbit-and-Kafka" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/30/Rabbit-and-Kafka/" class="article-date">
+  <time class="dt-published" datetime="2022-05-30T12:17:02.000Z" itemprop="datePublished">2022-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>►<a class="article-category-link" href="/categories/Technology/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/05/30/Rabbit-and-Kafka/">Rabbit and Kafka</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="RabbitMQ-VS-Kafka"><a href="#RabbitMQ-VS-Kafka" class="headerlink" title="RabbitMQ VS Kafka"></a>RabbitMQ VS Kafka</h1><h1 id="Kafka-vs-RabbitMQ-Technical-Comparison"><a href="#Kafka-vs-RabbitMQ-Technical-Comparison" class="headerlink" title="Kafka vs RabbitMQ: Technical Comparison"></a>Kafka vs RabbitMQ: Technical Comparison</h1><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Apache Kafka</th>
+<th>RabbitMQ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Architecture Type</strong></td>
+<td>Distributed commit log</td>
+<td>Message broker</td>
+</tr>
+<tr>
+<td><strong>Messaging Pattern</strong></td>
+<td>Publish-Subscribe</td>
+<td>Multiple patterns supported</td>
+</tr>
+<tr>
+<td><strong>Message Ordering</strong></td>
+<td>✅ Per-partition ordering</td>
+<td>✅ Per-queue ordering</td>
+</tr>
+<tr>
+<td><strong>Message Persistence</strong></td>
+<td>✅ Disk-based storage</td>
+<td>⚠️ Memory with optional disk</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>🚀 Very High (millions&#x2F;sec)</td>
+<td>✅ High (thousands&#x2F;sec)</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>⚠️ Higher (ms range)</td>
+<td>✅ Lower (μs range)</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>Custom binary protocol</td>
+<td>AMQP 0-9-1</td>
+</tr>
+<tr>
+<td><strong>Data Replay</strong></td>
+<td>✅ Native support</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td><strong>Delivery Semantics</strong></td>
+<td>At-least-once, Exactly-once</td>
+<td>At-least-once, At-most-once</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Kafka Consumer</span></span><br><span class="line"><span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">props.put(<span class="string">&quot;bootstrap.servers&quot;</span>, <span class="string">&quot;localhost:9092&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;group.id&quot;</span>, <span class="string">&quot;test-group&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;key.deserializer&quot;</span>, <span class="string">&quot;StringDeserializer&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;value.deserializer&quot;</span>, <span class="string">&quot;StringDeserializer&quot;</span>);</span><br><span class="line"></span><br><span class="line">KafkaConsumer&lt;String, String&gt; consumer = <span class="keyword">new</span> <span class="title class_">KafkaConsumer</span>&lt;&gt;(props);</span><br><span class="line">consumer.subscribe(Arrays.asList(<span class="string">&quot;topic&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// RabbitMQ Consumer</span></span><br><span class="line"><span class="type">ConnectionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConnectionFactory</span>();</span><br><span class="line">factory.setHost(<span class="string">&quot;localhost&quot;</span>);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> factory.newConnection();</span><br><span class="line"><span class="type">Channel</span> <span class="variable">channel</span> <span class="operator">=</span> connection.createChannel();</span><br><span class="line"><span class="type">DeliverCallback</span> <span class="variable">deliverCallback</span> <span class="operator">=</span> (consumerTag, delivery) -&gt; &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(delivery.getBody(), <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">channel.basicConsume(<span class="string">&quot;queue&quot;</span>, <span class="literal">true</span>, deliverCallback, consumerTag -&gt; &#123; &#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/30/Rabbit-and-Kafka/" data-id="cmg7v2q6g000kca6ued0r9n19" data-title="Rabbit and Kafka" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li></ul>
 
     </footer>
   </div>
@@ -247,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/22/Check-Docker-images/" data-id="cmg7v25890002a76u2xce1326" data-title="Check Docker images" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2022/03/22/Check-Docker-images/" data-id="cmg7v2q6f0009ca6ubkpy3svt" data-title="Check Docker images" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -293,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/20/docker-command-cp/" data-id="cmg7v258f000ya76udsul6b64" data-title="docker command cp" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2022/03/20/docker-command-cp/" data-id="cmg7v2q6i0012ca6u7y3l5pi9" data-title="docker command cp" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -338,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/09/Exception-Stack-Trace-Suppression-about-print-same-log/" data-id="cmg7v258c0008a76uf8d9f2kb" data-title="Exception Stack Trace Suppression (about print same log)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2022/03/09/Exception-Stack-Trace-Suppression-about-print-same-log/" data-id="cmg7v2q6d0005ca6u0ao0a5qp" data-title="Exception Stack Trace Suppression (about print same log)" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -396,7 +445,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
     </div>
   </div>
 
@@ -407,10 +456,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2025/09/30/Rabbit-and-Kafka/">Rabbit and Kafka</a>
-          </li>
         
           <li>
             <a href="/2025/09/30/SQL-search-column/">SQL search column</a>
@@ -426,6 +471,10 @@
         
           <li>
             <a href="/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/">jd-gui（1.4 version）and (1.6 version) problem</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/03/Log-of-Far-Away/">Log of Far Away</a>
           </li>
         
       </ul>
