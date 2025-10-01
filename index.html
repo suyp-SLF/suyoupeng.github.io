@@ -75,6 +75,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Rabbit-and-Kafka" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/30/Rabbit-and-Kafka/" class="article-date">
+  <time class="dt-published" datetime="2025-09-30T12:17:02.000Z" itemprop="datePublished">2025-09-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>►<a class="article-category-link" href="/categories/Technology/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/30/Rabbit-and-Kafka/">Rabbit and Kafka</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="RabbitMQ-VS-Kafka"><a href="#RabbitMQ-VS-Kafka" class="headerlink" title="RabbitMQ VS Kafka"></a>RabbitMQ VS Kafka</h1><h1 id="Kafka-vs-RabbitMQ-Technical-Comparison"><a href="#Kafka-vs-RabbitMQ-Technical-Comparison" class="headerlink" title="Kafka vs RabbitMQ: Technical Comparison"></a>Kafka vs RabbitMQ: Technical Comparison</h1><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Apache Kafka</th>
+<th>RabbitMQ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Architecture Type</strong></td>
+<td>Distributed commit log</td>
+<td>Message broker</td>
+</tr>
+<tr>
+<td><strong>Messaging Pattern</strong></td>
+<td>Publish-Subscribe</td>
+<td>Multiple patterns supported</td>
+</tr>
+<tr>
+<td><strong>Message Ordering</strong></td>
+<td>✅ Per-partition ordering</td>
+<td>✅ Per-queue ordering</td>
+</tr>
+<tr>
+<td><strong>Message Persistence</strong></td>
+<td>✅ Disk-based storage</td>
+<td>⚠️ Memory with optional disk</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>🚀 Very High (millions&#x2F;sec)</td>
+<td>✅ High (thousands&#x2F;sec)</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>⚠️ Higher (ms range)</td>
+<td>✅ Lower (μs range)</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>Custom binary protocol</td>
+<td>AMQP 0-9-1</td>
+</tr>
+<tr>
+<td><strong>Data Replay</strong></td>
+<td>✅ Native support</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td><strong>Delivery Semantics</strong></td>
+<td>At-least-once, Exactly-once</td>
+<td>At-least-once, At-most-once</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Kafka Consumer</span></span><br><span class="line"><span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">props.put(<span class="string">&quot;bootstrap.servers&quot;</span>, <span class="string">&quot;localhost:9092&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;group.id&quot;</span>, <span class="string">&quot;test-group&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;key.deserializer&quot;</span>, <span class="string">&quot;StringDeserializer&quot;</span>);</span><br><span class="line">props.put(<span class="string">&quot;value.deserializer&quot;</span>, <span class="string">&quot;StringDeserializer&quot;</span>);</span><br><span class="line"></span><br><span class="line">KafkaConsumer&lt;String, String&gt; consumer = <span class="keyword">new</span> <span class="title class_">KafkaConsumer</span>&lt;&gt;(props);</span><br><span class="line">consumer.subscribe(Arrays.asList(<span class="string">&quot;topic&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// RabbitMQ Consumer</span></span><br><span class="line"><span class="type">ConnectionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConnectionFactory</span>();</span><br><span class="line">factory.setHost(<span class="string">&quot;localhost&quot;</span>);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> factory.newConnection();</span><br><span class="line"><span class="type">Channel</span> <span class="variable">channel</span> <span class="operator">=</span> connection.createChannel();</span><br><span class="line"><span class="type">DeliverCallback</span> <span class="variable">deliverCallback</span> <span class="operator">=</span> (consumerTag, delivery) -&gt; &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(delivery.getBody(), <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">channel.basicConsume(<span class="string">&quot;queue&quot;</span>, <span class="literal">true</span>, deliverCallback, consumerTag -&gt; &#123; &#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/30/Rabbit-and-Kafka/" data-id="cmg7v258d000ga76u722876od" data-title="Rabbit and Kafka" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-SQL-search-column" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/30/SQL-search-column/" class="article-date">
@@ -107,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/30/SQL-search-column/" data-id="cmg6hr4o7000pro6u8a2agv5p" data-title="SQL search column" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/30/SQL-search-column/" data-id="cmg7v258e000pa76udsyeabcr" data-title="SQL search column" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -424,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/09/Restaurant-Somethings/" data-id="cmg6hr4o7000lro6u7z69gsxz" data-title="Restaurant Something" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/09/Restaurant-Somethings/" data-id="cmg7v258e000la76u2y0z4wqr" data-title="Restaurant Something" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -565,7 +663,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/Java-Garbage-Collection-GC/" data-id="cmg6hr4o6000bro6ugxlb87sy" data-title="Java: Garbage Collection, GC" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/Java-Garbage-Collection-GC/" data-id="cmg7v258d000fa76u86nz19di" data-title="Java: Garbage Collection, GC" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -627,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" data-id="cmg6hr4o90011ro6ucj7i33vs" data-title="jd-gui（1.4 version）and (1.6 version) problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/" data-id="cmg7v258g0014a76u688xajd5" data-title="jd-gui（1.4 version）and (1.6 version) problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -675,7 +773,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/03/Log-of-Far-Away/" data-id="cmg6hr4o7000kro6u0k4rgtns" data-title="Log of Far Away" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/03/Log-of-Far-Away/" data-id="cmg7v258e000ka76uhcprg1n9" data-title="Log of Far Away" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -721,7 +819,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/03/c-IDamageable/" data-id="cmg6hr4o8000sro6u7q7uf0oc" data-title="C# IDamageable" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/03/c-IDamageable/" data-id="cmg7v258f000xa76u4wr746r0" data-title="C# IDamageable" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -767,7 +865,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/shader-item-wave/" data-id="cmg6hr4o8000yro6ueozr20se" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/08/31/shader-item-wave/" data-id="cmg7v258f0012a76ucbbi5wmg" data-title="shader: item wave" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -907,7 +1005,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/31/How-to-create-a-simple-blog/" data-id="cmg6hr4o7000gro6u2speau1s" data-title="How to create a simple blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/08/31/How-to-create-a-simple-blog/" data-id="cmg7v258c000aa76u2fhtbhmn" data-title="How to create a simple blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -951,60 +1049,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/10/Java8-Map-getOrDefault/" data-id="cmg6hr4o6000fro6u0p9l6fcl" data-title="Java8 Map .getOrDefault" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/04/10/Java8-Map-getOrDefault/" data-id="cmg7v258f000sa76u5e0b8pu5" data-title="Java8 Map .getOrDefault" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java8/" rel="tag">Java8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Map/" rel="tag">Map</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Config-JAVA-HOME" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/04/Config-JAVA-HOME/" class="article-date">
-  <time class="dt-published" datetime="2024-04-03T17:27:22.000Z" itemprop="datePublished">2024-04-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/04/Config-JAVA-HOME/">Config JAVA_HOME</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="MAC版本"><a href="#MAC版本" class="headerlink" title="MAC版本"></a>MAC版本</h1><p>jdk位置&#x2F;where<br>一般JDK 位置 :(tip：很多命令需要sudo，不然查不到)<br>～&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;</p>
-<h1 id="打开配置文件"><a href="#打开配置文件" class="headerlink" title="打开配置文件"></a>打开配置文件</h1><p>open -e ~&#x2F;.zshrc<br>open -e ~&#x2F;.bash_profile</p>
-<h1 id="切换配置JAVA-HOME-change-version"><a href="#切换配置JAVA-HOME-change-version" class="headerlink" title="切换配置JAVA_HOME&#x2F;change version"></a>切换配置JAVA_HOME&#x2F;change version</h1><p>在配置文件添加JAVA_HOME,可以切换或者配置Java版本。<br>JAVA_HOME &#x3D; &#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;zulu-8.jdk&#x2F;Contents&#x2F;Home<br><img src="/images/posts/Config-JAVA-HOME/1.png" alt="change version"></p>
-<h1 id="使配置生效-active-config"><a href="#使配置生效-active-config" class="headerlink" title="*使配置生效&#x2F;active config"></a>*使配置生效&#x2F;active config</h1><p>配置玩的文件通过命令使配置生效：<br>source ~&#x2F;.bash_profile</p>
-<h1 id="查询所有版本-search-all-versions"><a href="#查询所有版本-search-all-versions" class="headerlink" title="查询所有版本&#x2F;search all versions"></a>查询所有版本&#x2F;search all versions</h1><p>&#x2F;usr&#x2F;libexec&#x2F;java_home  -V<br><img src="/images/posts/Config-JAVA-HOME/2.png" alt="search all versions"></p>
-<h1 id="进阶解决方案-high-leve-solution"><a href="#进阶解决方案-high-leve-solution" class="headerlink" title="进阶解决方案 \ high leve solution"></a>进阶解决方案 \ high leve solution</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">手动切换JDK版本</span><br><span class="line"></span><br><span class="line">通过修改 ~/.bash_profile文件修改JAVA_HOME，如果没有这个文件则需要新建一个。alias是自定义命令别名，修改配置文件如下：</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#######################</span></span></span><br><span class="line">export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)</span><br><span class="line">export JAVA_9_HOME=$(/usr/libexec/java_home -v9)</span><br><span class="line">export JAVA_10_HOME=$(/usr/libexec/java_home -v10)</span><br><span class="line">export JAVA_11_HOME=$(/usr/libexec/java_home -v11)</span><br><span class="line"></span><br><span class="line">alias java8=&#x27;export JAVA_HOME=$JAVA_8_HOME&#x27;</span><br><span class="line">alias java9=&#x27;export JAVA_HOME=$JAVA_9_HOME&#x27;</span><br><span class="line">alias java10=&#x27;export JAVA_HOME=$JAVA_10_HOME&#x27;</span><br><span class="line">alias java11=&#x27;export JAVA_HOME=$JAVA_11_HOME&#x27;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">默认是Java 11</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#######################</span></span></span><br><span class="line"></span><br><span class="line">执行下面命令，让文件生效</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"></span><br><span class="line">切换JDK版本就执行对应命令别名，比如，我要切换成JDK9，就直接输入命令</span><br><span class="line">java9</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/04/Config-JAVA-HOME/" data-id="cmg6hr4o30004ro6u1vikgqmu" data-title="Config JAVA_HOME" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-HOME/" rel="tag">JAVA_HOME</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
@@ -1029,7 +1078,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/C/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/godot/">godot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/Excel/">Excel</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Restaurant/">Restaurant</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/Database/">Database</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unix/">Unix</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/C/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/godot/">godot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/Excel/">Excel</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Restaurant/">Restaurant</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/Database/">Database</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/MQ/">MQ</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unix/">Unix</a></li></ul>
     </div>
   </div>
 
@@ -1039,7 +1088,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command/" rel="tag">Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GC/" rel="tag">GC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/German/" rel="tag">German</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA-HOME/" rel="tag">JAVA_HOME</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/" rel="tag">Java8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/" rel="tag">Log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Map/" rel="tag">Map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/" rel="tag">Unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Words/" rel="tag">Words</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/" rel="tag">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jd-gui/" rel="tag">jd-gui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command/" rel="tag">Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GC/" rel="tag">GC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/German/" rel="tag">German</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Godot/" rel="tag">Godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA-HOME/" rel="tag">JAVA_HOME</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/" rel="tag">Java8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/" rel="tag">Log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Map/" rel="tag">Map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/" rel="tag">Unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Words/" rel="tag">Words</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compile/" rel="tag">compile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godot/" rel="tag">godot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jd-gui/" rel="tag">jd-gui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shader/" rel="tag">shader</a></li></ul>
     </div>
   </div>
 
@@ -1049,7 +1098,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Command/" style="font-size: 15px;">Command</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/German/" style="font-size: 10px;">German</a> <a href="/tags/Godot/" style="font-size: 15px;">Godot</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/JAVA-HOME/" style="font-size: 10px;">JAVA_HOME</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java8/" style="font-size: 10px;">Java8</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Unix/" style="font-size: 15px;">Unix</a> <a href="/tags/Words/" style="font-size: 10px;">Words</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/godot/" style="font-size: 10px;">godot</a> <a href="/tags/jd-gui/" style="font-size: 10px;">jd-gui</a> <a href="/tags/shader/" style="font-size: 10px;">shader</a>
+      <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Command/" style="font-size: 15px;">Command</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/GC/" style="font-size: 10px;">GC</a> <a href="/tags/German/" style="font-size: 10px;">German</a> <a href="/tags/Godot/" style="font-size: 15px;">Godot</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/JAVA-HOME/" style="font-size: 10px;">JAVA_HOME</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java8/" style="font-size: 10px;">Java8</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Technology/" style="font-size: 10px;">Technology</a> <a href="/tags/Unix/" style="font-size: 15px;">Unix</a> <a href="/tags/Words/" style="font-size: 10px;">Words</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/godot/" style="font-size: 10px;">godot</a> <a href="/tags/jd-gui/" style="font-size: 10px;">jd-gui</a> <a href="/tags/shader/" style="font-size: 10px;">shader</a>
     </div>
   </div>
 
@@ -1071,6 +1120,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/30/Rabbit-and-Kafka/">Rabbit and Kafka</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/30/SQL-search-column/">SQL search column</a>
           </li>
         
@@ -1084,10 +1137,6 @@
         
           <li>
             <a href="/2025/09/05/jd-gui%EF%BC%881-4-version%EF%BC%89and-1-6-version-problem/">jd-gui（1.4 version）and (1.6 version) problem</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/03/Log-of-Far-Away/">Log of Far Away</a>
           </li>
         
       </ul>
