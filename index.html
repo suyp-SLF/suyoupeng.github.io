@@ -611,7 +611,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/01/12/C-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" target="_self">
         <div>
-          C++单例模式  &#x2F;&#x2F;C++11推荐的单例模式1234567891011121314151617class Singleton &#123;public:    static Singleton&amp; getInstance() &#123;        static Singleton instance;        return instance;    &#125
+          C++单例模式 局部静态变量（Meyers’）模式  &#x2F;&#x2F;C++11推荐的单例模式局部静态变量：最推荐用于单例模式。它更简洁，且编译器生成的代码通常比 call_once 更快。std::call_once：更灵活。它不一定非要用在单例上，可以用于任何需要延迟初始化的场景。例如，你可能有多个不同的函数，但它们都依赖同一个复杂的全局资源初始化： 12345678910111213
         </div>
       </a>
 
